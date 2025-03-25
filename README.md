@@ -1,29 +1,31 @@
-# Bernoulli Central Limit Theorem (CLT) Experiment
+# Bernoulli CLT Experiment: Empirical Verification of the Central Limit Theorem
 
-This project explores and visualizes the Central Limit Theorem in the context of Bernoulli random variables. I simulate multiple Bernoulli trials, aggregate sample means, and empirically demonstrate convergence toward the normal distribution. This notebook builds foundational intuition for how and why the CLT holds, even in binary, discrete spaces.
+## Overview
+This project is a deep dive into the Central Limit Theorem (CLT) using Bernoulli random variables. I simulated large numbers of Bernoulli trials to demonstrate how the distribution of sample means converges to a normal distribution. The project combines rigorous mathematical analysis with extensive simulation, offering insights into the probabilistic underpinnings of convergence.
 
-## 🧠 Objectives
+## Mathematical Framework
+Let \(X\) be a Bernoulli random variable with parameter \(p\):
+\[
+P(X = 1) = p \quad \text{and} \quad P(X = 0) = 1 - p.
+\]
+For \(n\) independent trials, the sample mean is:
+\[
+\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i.
+\]
+By the CLT, as \(n \to \infty\),
+\[
+\sqrt{n}(\bar{X}_n - p) \xrightarrow{d} \mathcal{N}(0,\, p(1-p)).
+\]
+This project empirically validates this convergence through simulation and visual analysis.
 
-- Simulate Bernoulli trials with varying probabilities.
-- Visualize sample mean distributions and compare them to the theoretical Gaussian.
-- Understand the role of sample size in convergence.
-- Evaluate empirical vs theoretical mean and variance.
+## Implementation & Experimentation
+- **Simulation:** I used NumPy to generate large samples of Bernoulli trials across different sample sizes.
+- **Visualization:** Histograms of the sample means are compared with the theoretical Gaussian curve derived from \(\mathcal{N}(0, p(1-p))\).
+- **Analysis:** The convergence of empirical means and variances to their theoretical values is examined in detail.
 
-## 🧪 Methods
+## Usage
+- **Prerequisites:** Python, NumPy, Matplotlib, SciPy.
+- **Run the Notebook:** Open `Bernoulli_CLT_Experiment.ipynb` and execute the cells sequentially.
+- **Customization:** Adjust \(p\) and sample sizes to explore convergence under different conditions.
 
-- Used NumPy to simulate thousands of Bernoulli experiments.
-- Compared empirical histogram results with `scipy.stats.norm.pdf` to overlay the ideal Gaussian.
-- Visualized the CLT effect at multiple sample sizes (e.g. n = 10, 30, 100).
-
-## 🔍 Key Takeaways
-
-- The distribution of sample means for Bernoulli trials converges remarkably quickly to a normal shape.
-- Sample size dramatically impacts convergence; even n=30 yields impressive results.
-- Empirical variance and theoretical variance converge closely as n grows.
-
-## 🚀 Technologies
-
-- Python
-- NumPy
-- Matplotlib
-- SciPy
+---
