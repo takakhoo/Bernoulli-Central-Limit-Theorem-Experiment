@@ -1,31 +1,45 @@
-# Bernoulli CLT Experiment: Empirical Verification of the Central Limit Theorem
+# Probability Experiments: Bernoulli Estimation and the Central Limit Theorem
 
-## Overview
-This project is a deep dive into the Central Limit Theorem (CLT) using Bernoulli random variables. I simulated large numbers of Bernoulli trials to demonstrate how the distribution of sample means converges to a normal distribution. The project combines rigorous mathematical analysis with extensive simulation, offering insights into the probabilistic underpinnings of convergence.
+A compact, executable study of discrete and continuous random variables,
+Bernoulli parameter estimation, and the Central Limit Theorem (CLT). The
+notebook connects each mathematical result to a NumPy/SciPy experiment and a
+visual check.
 
-## Mathematical Framework
-Let \(X\) be a Bernoulli random variable with parameter \(p\):
+## What this demonstrates
+
+- Expected value and variance for a discrete distribution
+- Numerical integration for a continuous probability density
+- Maximum-likelihood and Bayesian estimates for a Bernoulli parameter
+- Convergence of sample means toward a Gaussian distribution as sample size
+  increases
+
+## Quick start
+
+```bash
+git clone https://github.com/takakhoo/Bernoulli-Central-Limit-Theorem-Experiment.git
+cd Bernoulli-Central-Limit-Theorem-Experiment
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+python -m pip install -r requirements.txt
+jupyter lab "Bernoulli CLT Experiment.ipynb"
+```
+
+[Open the executed notebook](Bernoulli%20CLT%20Experiment.ipynb)
+
+## Mathematical focus
+
+For independent Bernoulli trials with success probability \(p\), the notebook
+compares the empirical sampling distribution with
+
 \[
-P(X = 1) = p \quad \text{and} \quad P(X = 0) = 1 - p.
+\sqrt{n}(\bar X_n-p) \xrightarrow{d} \mathcal{N}(0,p(1-p)).
 \]
-For \(n\) independent trials, the sample mean is:
-\[
-\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i.
-\]
-By the CLT, as \(n \to \infty\),
-\[
-\sqrt{n}(\bar{X}_n - p) \xrightarrow{d} \mathcal{N}(0,\, p(1-p)).
-\]
-This project empirically validates this convergence through simulation and visual analysis.
 
-## Implementation & Experimentation
-- **Simulation:** I used NumPy to generate large samples of Bernoulli trials across different sample sizes.
-- **Visualization:** Histograms of the sample means are compared with the theoretical Gaussian curve derived from \(\mathcal{N}(0, p(1-p))\).
-- **Analysis:** The convergence of empirical means and variances to their theoretical values is examined in detail.
+The cells are arranged as an exploratory lab: change the prior, success
+probability, sample size, or number of simulations and rerun from top to bottom.
 
-## Usage
-- **Prerequisites:** Python, NumPy, Matplotlib, SciPy.
-- **Run the Notebook:** Open `Bernoulli_CLT_Experiment.ipynb` and execute the cells sequentially.
-- **Customization:** Adjust \(p\) and sample sizes to explore convergence under different conditions.
+## Scope
 
----
+This is an educational experiment, not a general-purpose statistics package.
+It is useful as a transparent reference for the assumptions and mechanics
+behind common estimators and asymptotic approximations.
